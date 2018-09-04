@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { Consumer } from '../../context'
+import Form from '../forms/Form'
 
 class MainForm extends Component {
   render() {
     return (
         <Consumer>
         {value => {
-          const { country,heading } = value
-            if ( country === undefined || country.lenght === 0 ) {
+          const { hasil,heading } = value
+            if ( hasil === undefined || hasil.lenght === 0 ) {
               return <h1>Hai</h1>
             }
             else {

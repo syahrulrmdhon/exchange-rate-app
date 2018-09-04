@@ -1,15 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import axios from 'axios'
 
 const Context = React.createContext();
 
 export class Provider extends Component {
     state = {
-        country: [],
+        hasil: [],
         heading: 'Currency converter'
     };
 
     componentDidMount() {
-        
+        axios
+        .get(`https://cors-anywhere.herokuapp.com/https://v3.exchangerate-api.com/bulk/06151b0af8d5113c554ffe44/USD`)
+        .then(res => {
+            console.log(res.data)
+            this.setState({hasil: res.data.rates})
+        })
+        .catch(err => console.log(err));
     }
 
   render() {
