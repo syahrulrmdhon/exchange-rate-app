@@ -5,7 +5,7 @@ const Context = React.createContext();
 
 export class Provider extends Component {
     state = {
-        hasil: [],
+        hasil_fetch: [],
         heading: 'Currency converter'
     };
 
@@ -13,8 +13,8 @@ export class Provider extends Component {
         axios
         .get(`https://cors-anywhere.herokuapp.com/https://v3.exchangerate-api.com/bulk/06151b0af8d5113c554ffe44/USD`)
         .then(res => {
-            console.log(res.data)
-            this.setState({hasil: res.data.rates})
+            console.log(res.data.rates)
+            this.setState({hasil_fetch: res.data.rates})
         })
         .catch(err => console.log(err));
     }

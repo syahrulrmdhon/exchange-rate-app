@@ -7,8 +7,8 @@ class MainForm extends Component {
     return (
         <Consumer>
         {value => {
-          const { hasil,heading } = value
-            if ( hasil === undefined || hasil.lenght === 0 ) {
+          const { hasil_fetch,heading } = value
+            if ( hasil_fetch === undefined || hasil_fetch.lenght === 0 ) {
               return <h1>Hai</h1>
             }
             else {
@@ -16,7 +16,7 @@ class MainForm extends Component {
                 <React.Fragment>
                   <h3 className="text-center-mb">{heading}</h3>
                   <div className="row">
-                    
+                      <Form hasil_fetch={hasil_fetch}/>
                   </div>
                 </React.Fragment>
               )
