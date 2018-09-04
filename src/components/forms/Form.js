@@ -6,10 +6,13 @@ const Form = (props) => {
         <div className='col-md-12'>
             <div className='card mb-4 shadow-sm'>
                 <div className='card-body'>
-                    <h5>{Object.keys(hasil_fetch)[0]} : {hasil_fetch.USD}</h5>
+                    <h5>1 USD</h5>
                 </div>
                 <div className='card-body'>
-                    <h5>{hasil_fetch.IDR}</h5>
+                    <h5>
+                        {hasil_fetch.IDR} {Object.keys(hasil_fetch).find(key => hasil_fetch[key] === hasil_fetch.IDR)}
+                        { /* hehehe */ }
+                    </h5>
                 </div>
             </div>
         </div>

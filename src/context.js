@@ -11,7 +11,7 @@ export class Provider extends Component {
 
     componentDidMount() {
         axios
-        .get(`https://cors-anywhere.herokuapp.com/https://v3.exchangerate-api.com/bulk/06151b0af8d5113c554ffe44/USD`)
+        .get(`https://cors-anywhere.herokuapp.com/https://api.exchangeratesapi.io/latest?base=USD`)
         .then(res => {
             console.log(res.data.rates)
             this.setState({hasil_fetch: res.data.rates})
