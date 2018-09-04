@@ -1,19 +1,15 @@
 import React from 'react'
+import ItemCurrency from '../forms/ItemCurrency'
 
 const Form = (props) => {
-    const  { hasil_fetch } = props 
+    const  { rates } = props
     return (
-        <div className='col-md-12'>
+        <div className='col-md-8'>
             <div className='card mb-4 shadow-sm'>
-                <div className='card-body'>
-                    <h5>1 USD</h5>
+                <div className="card-header">
+                    USD <span className='angka'>1</span>
                 </div>
-                <div className='card-body'>
-                    <h5>
-                        {hasil_fetch.IDR} {Object.keys(hasil_fetch).find(key => hasil_fetch[key] === hasil_fetch.IDR)}
-                        { /* hehehe */ }
-                    </h5>
-                </div>
+                <ItemCurrency rates={rates}/>
             </div>
         </div>
     )
