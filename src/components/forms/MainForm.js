@@ -7,7 +7,7 @@ class MainForm extends Component {
     return (
         <Consumer>
         {value => {
-          const { rates,heading } = value
+          const { rates,heading,symbols } = value
             if ( rates === undefined || rates.lenght === 0 ) {
               return <h1>Hai</h1>
             }
@@ -16,7 +16,7 @@ class MainForm extends Component {
                 <React.Fragment>
                   <h3 className="text-center-mb">{heading}</h3>
                   <div className="row  h-100 justify-content-center align-items-center">
-                      <Form rates={rates}/>
+                      <Form rates={rates} symbols={symbols}/>
                   </div>
                 </React.Fragment>
               )
