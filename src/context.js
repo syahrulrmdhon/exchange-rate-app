@@ -4,11 +4,15 @@ import axios from 'axios'
 const Context = React.createContext();
 
 export class Provider extends Component {
-    state = {
-        rates: [],
-        symbols: [],
-        heading: 'Currency converter'
-    };
+    constructor(props) {
+        super(props)
+        this.state = {
+            rates: [],
+            symbols: [],
+            heading: 'Currency converter',
+        }
+        this.removeListItem = this.removeListItem.bind(this);
+      }
 
     async componentDidMount() {
         const res = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.exchangeratesapi.io/latest?base=USD`)
@@ -23,9 +27,15 @@ export class Provider extends Component {
         })
     }
 
+    removeListItem (i) {
+        var list = [...this.state.rates]
+        list.splice(i, 1);
+        this.setState({rates: list});
+    }
+
   render() {
     return (
-        <Context.Provider value={this.state}>
+        <Context.Provider value={this.state} removeListItem={this.removeListItem}>
             {this.props.children}
         </Context.Provider>
     )
