@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Consumer } from '../../context'
+import Spinner from '../layouts/Spinner'
 import Form from '../forms/Form'
 
 class MainForm extends Component {
@@ -9,7 +10,7 @@ class MainForm extends Component {
         {(value,removeListItem) => {
           const { rates,heading,symbols } = value
             if ( rates === undefined || rates.lenght === 0 ) {
-              return <h1>Hai</h1>
+              return <Spinner/>
             }
             else {
               return (
