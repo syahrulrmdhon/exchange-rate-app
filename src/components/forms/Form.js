@@ -9,7 +9,7 @@ const Form = (props) => {
             ItemCurrency.push(
                 <div className='card-body' key={i}>
                     <span className='angka'>
-                        {rates[i]}
+                        {symbols[i].currencySymbol} {rates[i]}
                         <button 
                             type="button" 
                             className="btn btn-danger" 
@@ -23,7 +23,7 @@ const Form = (props) => {
                         {sym}
                         { /* hehehe */ }
                     </h5>
-                            {symbols[sym]}
+                            {symbols[i].currencyName}
                     <br/>
                 </div>
             )
@@ -32,12 +32,13 @@ const Form = (props) => {
             <div className='col-md-8'>
                 <div className='card mb-4 shadow-sm'>
                     <div className="card-header">
-                        USD 
+                        USD
                         <span className='angka'>
                             <input 
                                 className="form-control" 
                                 type="number" 
-                                defaultValue={props.inputVal} 
+                                defaultValue={props.inputVal}
+                                onChange={()=>props.onchanges(rates['IDR'],2)}
                             />
                         </span>
                     </div>

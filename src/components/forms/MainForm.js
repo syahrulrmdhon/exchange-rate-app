@@ -4,33 +4,24 @@ import Spinner from '../layouts/Spinner'
 import Form from '../forms/Form'
 
 class MainForm extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      inputVal: '1',
-    }
-  }
-  onChange() {
-    
-  }
   render() {
     return (
         <Consumer>
-        {({ value, remove }) => {
-          const { rates,heading,symbols } = value
+        {({ value, remove, onchanges }) => {
+          const { rates,symbols,inputVal } = value
             if ( rates === undefined || rates.lenght === 0 ) {
               return <Spinner/>
             }
             else {
               return (
                 <React.Fragment>
-                  <h3 className="text-center-mb">{heading}</h3>
                   <div className="row  h-100 justify-content-center align-items-center">
                       <Form 
                         rates={rates} 
                         symbols={symbols} 
                         removeListItem={remove} 
-                        inputVal={this.state.inputVal}
+                        inputVal={inputVal}
+                        onchanges={onchanges}
                       />
                   </div>
                 </React.Fragment>
