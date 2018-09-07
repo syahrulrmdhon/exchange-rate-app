@@ -23,7 +23,7 @@ const Form = (props) => {
                         {sym}
                         { /* hehehe */ }
                     </h5>
-                            {symbols[i].currencyName}
+                        {symbols[i].currencyName}
                     <br/>
                 </div>
             )
@@ -32,11 +32,13 @@ const Form = (props) => {
             <div className='col-md-8'>
                 <div className='card mb-4 shadow-sm'>
                     <div className="card-header">
-                        USD
+                        <h5>USD</h5>
+                        United States Dollars
                         <span className='angka'>
                             <input 
                                 className="form-control" 
                                 type="number" 
+                                style={{width:'100px'}}
                                 defaultValue={props.inputVal}
                                 onChange={()=>props.onchanges(rates['IDR'],2)}
                             />
