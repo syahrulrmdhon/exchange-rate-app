@@ -7,7 +7,7 @@ class MainForm extends Component {
   render() {
     return (
         <Consumer>
-        {(value,removeListItem) => {
+        {({ value, remove }) => {
           const { rates,heading,symbols } = value
             if ( rates === undefined || rates.lenght === 0 ) {
               return <Spinner/>
@@ -17,7 +17,7 @@ class MainForm extends Component {
                 <React.Fragment>
                   <h3 className="text-center-mb">{heading}</h3>
                   <div className="row  h-100 justify-content-center align-items-center">
-                      <Form rates={rates} symbols={symbols} removeListItem={this.props.removeListItem}/>
+                      <Form rates={rates} symbols={symbols} removeListItem={remove}/>
                   </div>
                 </React.Fragment>
               )

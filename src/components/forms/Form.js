@@ -2,7 +2,7 @@ import React from 'react'
 
 
 const Form = (props) => {
-    const  { rates,symbols } = props
+    const  { rates,symbols} = props
     const ItemCurrency = []
         for (const i in rates) {
             const sym = Object.keys(rates).find(key => rates[key] === rates[i]);
@@ -14,7 +14,7 @@ const Form = (props) => {
                             type="button" 
                             className="btn btn-danger" 
                             style={{marginLeft:'10px'}} 
-                            onClick={()=>this.props.removeListItem(i)}
+                            onClick={()=>props.removeListItem(i)}
                         >
                             &minus;
                         </button>

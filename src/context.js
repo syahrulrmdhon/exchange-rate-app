@@ -27,15 +27,16 @@ export class Provider extends Component {
         })
     }
 
-    removeListItem (i) {
-        var list = [...this.state.rates]
-        list.splice(i, 1);
-        this.setState({rates: list});
-    }
+    removeListItem = key => {
+        const rates = Object.assign({}, this.state.rates);
+        delete rates[key];
+    
+        this.setState({ rates });
+      };
 
   render() {
     return (
-        <Context.Provider value={this.state} removeListItem={this.removeListItem}>
+        <Context.Provider value={{ value: this.state, remove: this.removeListItem }}>
             {this.props.children}
         </Context.Provider>
     )
