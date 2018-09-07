@@ -32,7 +32,14 @@ const Form = (props) => {
             <div className='col-md-8'>
                 <div className='card mb-4 shadow-sm'>
                     <div className="card-header">
-                        USD <span className='angka'>1</span>
+                        USD 
+                        <span className='angka'>
+                            <input 
+                                className="form-control" 
+                                type="number" 
+                                defaultValue={props.inputVal} 
+                            />
+                        </span>
                     </div>
                         {ItemCurrency}
                     </div>

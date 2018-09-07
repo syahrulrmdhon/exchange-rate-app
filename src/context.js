@@ -15,7 +15,7 @@ export class Provider extends Component {
       }
 
     async componentDidMount() {
-        const res = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.exchangeratesapi.io/latest?base=USD`)
+        const res = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.exchangeratesapi.io/latest?base=USD&symbols=CAD,IDR,GBP,CHF,SGD,INR,MYR,JPY,KRW`)
         const sym = await axios.get(`https://cors-anywhere.herokuapp.com/http://data.fixer.io/api/symbols?access_key=759c0a107a45ea8fb09d3ff7a74f6b53`)
         
         console.log(res.data)
@@ -30,7 +30,7 @@ export class Provider extends Component {
     removeListItem = key => {
         const rates = Object.assign({}, this.state.rates);
         delete rates[key];
-    
+
         this.setState({ rates });
       };
 

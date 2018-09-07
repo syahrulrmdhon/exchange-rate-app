@@ -4,6 +4,15 @@ import Spinner from '../layouts/Spinner'
 import Form from '../forms/Form'
 
 class MainForm extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      inputVal: '1',
+    }
+  }
+  onChange() {
+    
+  }
   render() {
     return (
         <Consumer>
@@ -17,7 +26,12 @@ class MainForm extends Component {
                 <React.Fragment>
                   <h3 className="text-center-mb">{heading}</h3>
                   <div className="row  h-100 justify-content-center align-items-center">
-                      <Form rates={rates} symbols={symbols} removeListItem={remove}/>
+                      <Form 
+                        rates={rates} 
+                        symbols={symbols} 
+                        removeListItem={remove} 
+                        inputVal={this.state.inputVal}
+                      />
                   </div>
                 </React.Fragment>
               )
