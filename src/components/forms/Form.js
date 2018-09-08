@@ -4,6 +4,7 @@ import React from 'react'
 const Form = (props) => {
     const  { rates,symbols} = props
     const ItemCurrency = []
+    const Objects = []
         for (const i in rates) {
             const sym = Object.keys(rates).find(key => rates[key] === rates[i]);
             ItemCurrency.push(
@@ -27,6 +28,7 @@ const Form = (props) => {
                     <br/>
                 </div>
             )
+            Objects.push(i)
         }
         return (
             <div className='col-md-8'>
@@ -40,7 +42,7 @@ const Form = (props) => {
                                 type="number" 
                                 style={{width:'100px'}}
                                 defaultValue={props.inputVal}
-                                onChange={()=>props.onchanges(rates['IDR'],2)}
+                                onChange={(e)=>props.onchanges(e,Objects)}
                             />
                         </span>
                     </div>

@@ -10,6 +10,7 @@ export class Provider extends Component {
             rates: [],
             symbols: [],
             inputVal: '1',
+            resrates:[]
         }
         this.removeListItem = this.removeListItem.bind(this);
         this.onchanges = this.onchanges.bind(this)
@@ -24,22 +25,27 @@ export class Provider extends Component {
         
         this.setState({
             rates: res.data.rates,
-            symbols: sym.data.results
+            symbols: sym.data.results,
+            resrates: res.data.rates
         })
     }
 
     removeListItem = key => {
-        const rates = Object.assign({}, this.state.rates)
+        const rates = Object.assign({}, this.state.resrates)
         delete rates[key]
 
-        this.setState({ rates })
+        this.setState({ resrates: rates })
     };
     
-    onchanges = (key,value) => {
-        //const ratess = Object.values(this.state.rates[key])
-        //const results = ratess * value
+    onchanges = (e,Objects) => {
+        const angka = e.target.value
+        const rates = Object.assign({}, this.state.resrates)
 
-        //this.setState({results})
+        for (var i in Objects) {
+            const key = Objects[i]
+            rates[key] = this.state.rates[key] * angka
+            this.setState({ resrates: rates })
+        }
     }
 
   render() {

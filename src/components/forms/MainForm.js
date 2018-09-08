@@ -8,8 +8,8 @@ class MainForm extends Component {
     return (
         <Consumer>
         {({ value, remove, onchanges }) => {
-          const { rates,symbols,inputVal } = value
-            if ( rates === undefined || rates.lenght === 0 ) {
+          const { resrates,symbols,inputVal } = value
+            if ( resrates === undefined || resrates.lenght === 0 ) {
               return <Spinner/>
             }
             else {
@@ -17,7 +17,7 @@ class MainForm extends Component {
                 <React.Fragment>
                   <div className="row  h-100 justify-content-center align-items-center">
                       <Form 
-                        rates={rates} 
+                        rates={resrates} 
                         symbols={symbols} 
                         removeListItem={remove} 
                         inputVal={inputVal}
