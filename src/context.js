@@ -10,9 +10,9 @@ export class Provider extends Component {
             rates: [],
             symbols: [],
             inputVal: '1',
-            valsymbol:'',
+            valsymbol:'CAD,IDR,GBP,CHF,SGD,INR,MYR,JPY,KRW',
             resrates:[],
-            link: `https://cors-anywhere.herokuapp.com/https://api.exchangeratesapi.io/latest?base=USD&symbols=CAD,IDR,GBP,CHF,SGD,INR,MYR,JPY,KRW`
+            link: `https://cors-anywhere.herokuapp.com/https://api.exchangeratesapi.io/latest?base=USD&symbols=`
         }
         this.removeListItem = this.removeListItem.bind(this)
         this.onchanges = this.onchanges.bind(this)
@@ -21,7 +21,7 @@ export class Provider extends Component {
       }
 
     async getlink() {
-        const res = await axios.get(`${this.state.link}`)
+        const res = await axios.get(`${this.state.link + this.state.valsymbol}`)
         const sym = await axios.get(`https://cors-anywhere.herokuapp.com/https://free.currencyconverterapi.com/api/v6/currencies`)
         
         this.setState({
@@ -39,7 +39,10 @@ export class Provider extends Component {
         const rates = Object.assign({}, this.state.resrates)
         delete rates[key]
 
-        this.setState({ resrates: rates })
+        const valsymbol = this.state.valsymbol
+        const sym = valsymbol.replace(new RegExp(key+',', 'gi'), '')
+
+        this.setState({ resrates: rates,valsymbol: sym })
     };
     
     onchanges = (e,Objects) => {
@@ -55,16 +58,17 @@ export class Provider extends Component {
 
     handleurl = () => {
         const links = this.state.link
+        const valsymbol = this.state.valsymbol
         const param = this.state.valsymbol
-        const a = links + param
+        const a = links + valsymbol + param
         this.setState({link: a})
-        console.log(a)
     }
 
     onoptionchanges = (e) => {
         const val = e.target.value
-        this.setState({ valsymbol: val })
-        return { val }
+        const valsymbol = this.state.valsymbol
+        const vals = valsymbol + val
+        this.setState({ valsymbol: vals })
     }
 
   render() {
