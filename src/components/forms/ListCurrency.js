@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const Form = (props) => {
+const ListCurrency = (props) => {
     const  { rates,symbols} = props
     const ItemCurrency = []
     const Objects = []
@@ -52,4 +52,4 @@ const Form = (props) => {
         )
 }
 
-export default Form
+export default ListCurrency

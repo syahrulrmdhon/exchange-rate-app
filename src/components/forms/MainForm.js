@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Consumer } from '../../context'
 import Spinner from '../layouts/Spinner'
-import Form from '../forms/Form'
+import ListCurrency from '../forms/ListCurrency'
 
 class MainForm extends Component {
   render() {
@@ -16,7 +16,7 @@ class MainForm extends Component {
               return (
                 <React.Fragment>
                   <div className="row  h-100 justify-content-center align-items-center">
-                      <Form 
+                      <ListCurrency 
                         rates={resrates} 
                         symbols={symbols} 
                         removeListItem={remove} 
