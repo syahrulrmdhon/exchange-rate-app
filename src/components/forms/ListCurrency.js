@@ -56,7 +56,8 @@ const ListCurrency = (props) => {
                         <option value=",BRL">Brazilian Real</option>
                         <option value=",CZK">Czech Koruna</option>
                     </select>
-                    <input type="submit" className="form-control" value="Submit" onClick={props.handleurl} />
+                    <br/>
+                    <input type="submit" className="form-control btn-info" value="Submit" onClick={props.handleurl} />
                     </div>
                 </div>
         )
