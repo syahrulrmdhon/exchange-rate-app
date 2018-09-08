@@ -10,26 +10,29 @@ export class Provider extends Component {
             rates: [],
             symbols: [],
             inputVal: '1',
-            valsymbol:[],
-            resrates:[]
+            valsymbol:'',
+            resrates:[],
+            link: `https://cors-anywhere.herokuapp.com/https://api.exchangeratesapi.io/latest?base=USD&symbols=CAD,IDR,GBP,CHF,SGD,INR,MYR,JPY,KRW`
         }
         this.removeListItem = this.removeListItem.bind(this)
         this.onchanges = this.onchanges.bind(this)
         this.onoptionchanges = this.onoptionchanges.bind(this)
+        this.handleurl = this.handleurl.bind(this)
       }
 
-    async componentDidMount() {
-        const res = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.exchangeratesapi.io/latest?base=USD&symbols=CAD,IDR,GBP,CHF,SGD,INR,MYR,JPY,KRW`)
+    async getlink() {
+        const res = await axios.get(`${this.state.link}`)
         const sym = await axios.get(`https://cors-anywhere.herokuapp.com/https://free.currencyconverterapi.com/api/v6/currencies`)
-        
-        console.log(res.data)
-        console.log(sym.data.results)
         
         this.setState({
             rates: res.data.rates,
             symbols: sym.data.results,
             resrates: res.data.rates
         })
+    }
+
+    async componentDidMount() {
+        this.getlink()
     }
 
     removeListItem = key => {
@@ -50,10 +53,18 @@ export class Provider extends Component {
         }
     }
 
+    handleurl = () => {
+        const links = this.state.link
+        const param = this.state.valsymbol
+        const a = links + param
+        this.setState({link: a})
+        console.log(a)
+    }
+
     onoptionchanges = (e) => {
         const val = e.target.value
         this.setState({ valsymbol: val })
-        console.log(this.state.valsymbol)
+        return { val }
     }
 
   render() {
@@ -63,7 +74,8 @@ export class Provider extends Component {
                 value: this.state, 
                 remove: this.removeListItem, 
                 onchanges: this.onchanges,
-                onoptionchanges: this.onoptionchanges
+                onoptionchanges: this.onoptionchanges,
+                handleurl: this.handleurl
             }}>
             {this.props.children}
         </Context.Provider>

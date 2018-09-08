@@ -50,11 +50,13 @@ const ListCurrency = (props) => {
                     </div>
                     <div className='card-body'>
                     <select className="form-control" value={props.valsymbol} onChange={props.onoptionchanges}>
+                        <option value="">Select Country...</option>
                         <option value=",AUD">Australian Dollar</option>
                         <option value=",BGN">Bulgarian Lev</option>
                         <option value=",BRL">Brazilian Real</option>
                         <option value=",CZK">Czech Koruna</option>
                     </select>
+                    <input type="submit" className="form-control" value="Submit" onClick={props.handleurl} />
                     </div>
                 </div>
         )
