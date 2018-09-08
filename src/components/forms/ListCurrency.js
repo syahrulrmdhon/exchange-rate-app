@@ -48,6 +48,14 @@ const ListCurrency = (props) => {
                     </div>
                         {ItemCurrency}
                     </div>
+                    <div className='card-body'>
+                    <select className="form-control" value={props.valsymbol} onChange={props.onoptionchanges}>
+                        <option value=",AUD">Australian Dollar</option>
+                        <option value=",BGN">Bulgarian Lev</option>
+                        <option value=",BRL">Brazilian Real</option>
+                        <option value=",CZK">Czech Koruna</option>
+                    </select>
+                    </div>
                 </div>
         )
 }

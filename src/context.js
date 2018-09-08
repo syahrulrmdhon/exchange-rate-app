@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-const Context = React.createContext();
+const Context = React.createContext()
 
 export class Provider extends Component {
     constructor(props) {
@@ -10,10 +10,12 @@ export class Provider extends Component {
             rates: [],
             symbols: [],
             inputVal: '1',
+            valsymbol:[],
             resrates:[]
         }
-        this.removeListItem = this.removeListItem.bind(this);
+        this.removeListItem = this.removeListItem.bind(this)
         this.onchanges = this.onchanges.bind(this)
+        this.onoptionchanges = this.onoptionchanges.bind(this)
       }
 
     async componentDidMount() {
@@ -48,9 +50,21 @@ export class Provider extends Component {
         }
     }
 
+    onoptionchanges = (e) => {
+        const val = e.target.value
+        this.setState({ valsymbol: val })
+        console.log(this.state.valsymbol)
+    }
+
   render() {
     return (
-        <Context.Provider value={{ value: this.state, remove: this.removeListItem, onchanges: this.onchanges }}>
+        <Context.Provider 
+            value={{ 
+                value: this.state, 
+                remove: this.removeListItem, 
+                onchanges: this.onchanges,
+                onoptionchanges: this.onoptionchanges
+            }}>
             {this.props.children}
         </Context.Provider>
     )

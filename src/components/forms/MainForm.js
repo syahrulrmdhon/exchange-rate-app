@@ -7,7 +7,7 @@ class MainForm extends Component {
   render() {
     return (
         <Consumer>
-        {({ value, remove, onchanges }) => {
+        {({ value, remove, onchanges, onoptionchanges }) => {
           const { resrates,symbols,inputVal } = value
             if ( resrates === undefined || resrates.lenght === 0 ) {
               return <Spinner/>
@@ -22,6 +22,7 @@ class MainForm extends Component {
                         removeListItem={remove} 
                         inputVal={inputVal}
                         onchanges={onchanges}
+                        onoptionchanges={onoptionchanges}
                       />
                   </div>
                 </React.Fragment>
