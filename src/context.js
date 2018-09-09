@@ -69,12 +69,16 @@ export class Provider extends Component {
     }
   };
 
-  handleurl = () => {
+  async handleurl() {
     const links = this.state.link;
     const valsymbol = this.state.valsymbol;
     const a = links + valsymbol;
-    this.setState({ link: a });
-    console.log(a);
+    const res = await axios.get(`${this.state.link + this.state.valsymbol}`);
+    this.setState({
+      rates: res.data.rates,
+      resrates: res.data.rates,
+      link: a
+    });
   };
 
   onoptionchanges = e => {
@@ -82,7 +86,6 @@ export class Provider extends Component {
     const valsymbol = this.state.valsymbol;
     const vals = valsymbol + val;
     this.setState({ valsymbol: vals });
-    console.log(vals);
   };
 
   render() {
