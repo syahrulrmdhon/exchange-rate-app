@@ -7,12 +7,12 @@ export class Provider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allres: [],
-      rates: [],
-      symbols: [],
-      inputVal: "1",
-      valsymbol: "CAD,IDR,GBP,CHF,SGD,INR,MYR,JPY,KRW",
-      resrates: [],
+      allres: [], // store all the rates that available from promise https://api.exchangeratesapi.io
+      rates: [], // store original value from promise https://api.exchangeratesapi.io
+      symbols: [], // store all symbol (ex: currencyName, currencySymbol) https://free.currencyconverterapi.com/
+      inputVal: "1", // set defaultValue for inputVal
+      valsymbol: "CAD,IDR,GBP,CHF,SGD,INR,MYR,JPY,KRW", //set currency that required
+      resrates: [], // store multipy rates result when inputVal changes
       link: `https://cors-anywhere.herokuapp.com/https://api.exchangeratesapi.io/latest?base=USD&symbols=`
     };
     this.removeListItem = this.removeListItem.bind(this);
@@ -50,11 +50,9 @@ export class Provider extends Component {
     if (valsymbol.startsWith(key)) {
       const sym = valsymbol.replace(new RegExp(key + ",", "gi"), "");
       this.setState({ valsymbol: sym });
-      console.log(sym);
     } else {
       const sym = valsymbol.replace(new RegExp("," + key, "gi"), "");
       this.setState({ valsymbol: sym });
-      console.log(sym);
     }
 
     this.setState({ resrates: rates });
@@ -76,6 +74,7 @@ export class Provider extends Component {
     const valsymbol = this.state.valsymbol;
     const a = links + valsymbol;
     this.setState({ link: a });
+    console.log(a);
   };
 
   onoptionchanges = e => {
@@ -83,6 +82,7 @@ export class Provider extends Component {
     const valsymbol = this.state.valsymbol;
     const vals = valsymbol + val;
     this.setState({ valsymbol: vals });
+    console.log(vals);
   };
 
   render() {
