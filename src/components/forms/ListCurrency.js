@@ -34,7 +34,7 @@ const ListCurrency = props => {
     if (rates[i] === allres[i]) {
     } else {
       Options.push(
-        <option key={i} value={"," + rates[i]}>
+        <option key={i} value={"," + i}>
           {symbols[i].currencyName}
         </option>
       );
@@ -64,6 +64,9 @@ const ListCurrency = props => {
           value={props.valsymbol}
           onChange={props.onoptionchanges}
         >
+          <option key="0" value="">
+            Select Currency....
+          </option>
           {Options}
         </select>
         <br />
