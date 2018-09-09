@@ -13,7 +13,7 @@ export class Provider extends Component {
       inputVal: "1", // set defaultValue for inputVal
       valsymbol: "CAD,IDR,GBP,CHF,SGD,INR,MYR,JPY,KRW", //set currency that required
       resrates: [], // store multipy rates result when inputVal changes
-      link: `https://cors-anywhere.herokuapp.com/https://api.exchangeratesapi.io/latest?base=USD&symbols=`
+      link: `https://api.exchangeratesapi.io/latest?base=USD&symbols=`
     };
     this.removeListItem = this.removeListItem.bind(this);
     this.onchanges = this.onchanges.bind(this);
@@ -24,10 +24,10 @@ export class Provider extends Component {
   async getlink() {
     const res = await axios.get(`${this.state.link + this.state.valsymbol}`);
     const allres = await axios.get(
-      `https://cors-anywhere.herokuapp.com/https://api.exchangeratesapi.io/latest?base=USD`
+      `https://api.exchangeratesapi.io/latest?base=USD`
     );
     const sym = await axios.get(
-      `https://cors-anywhere.herokuapp.com/https://free.currencyconverterapi.com/api/v6/currencies`
+      `https://free.currencyconverterapi.com/api/v6/currencies`
     );
 
     this.setState({
