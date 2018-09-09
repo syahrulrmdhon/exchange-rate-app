@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,OACI,WAAa,CAEjB,OACI,iBAAmB","file":"static/css/main.7a787a9e.css","sourcesContent":[".angka {\r\n    float: right;\r\n}\r\n.close {\r\n    padding-left: 10px;\r\n}\n\n\n// WEBPACK FOOTER //\n// ./src/App.css"],"sourceRoot":""}
