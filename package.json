@@ -2,8 +2,13 @@
   "name": "exchange-rate-app",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "http://syahrulrmdhon.github.io/exchange-rate-app",
   "dependencies": {
     "axios": "^0.18.0",
+    "compression": "^1.7.3",
+    "express": "^4.16.3",
+    "express-basic-auth": "^1.1.5",
+    "gh-pages": "^1.2.0",
     "react": "^16.4.2",
     "react-click-to-edit": "^0.3.0",
     "react-dom": "^16.4.2",
@@ -14,6 +19,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
