@@ -9,7 +9,7 @@ class MainForm extends Component {
       <Consumer>
         {({ value, remove, onchanges, onoptionchanges, handleurl }) => {
           const { resrates, symbols, inputVal, allres } = value;
-          if (resrates === undefined || resrates.lenght === 0) {
+          if (resrates === undefined || Object.keys(resrates).length === 0) {
             return <Spinner />;
           } else {
             return (
