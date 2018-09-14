@@ -1,6 +1,5 @@
-#Exchange Rate App
-
-This project is an assessment test for Front End Engineer position at ShopeeID
+##Exchange Rate App
+Currency Converter
 
 ## Getting Started
 
